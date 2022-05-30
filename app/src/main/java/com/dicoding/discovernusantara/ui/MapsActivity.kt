@@ -1,7 +1,8 @@
-package com.dicoding.discovernusantara
+package com.dicoding.discovernusantara.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dicoding.discovernusantara.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -38,6 +39,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     companion object {
-
+        const val EXTRA_LAT = "extra_lat"
+        const val EXTRA_LONG = "extra_long"
     }
 }

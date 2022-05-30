@@ -1,4 +1,4 @@
-package com.dicoding.discovernusantara
+package com.dicoding.discovernusantara.ui
 
 import android.content.Intent
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.dicoding.discovernusantara
+package com.dicoding.discovernusantara.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

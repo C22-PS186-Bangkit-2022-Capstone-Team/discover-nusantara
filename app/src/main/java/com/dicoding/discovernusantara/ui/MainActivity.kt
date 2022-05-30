@@ -1,4 +1,4 @@
-package com.dicoding.discovernusantara
+package com.dicoding.discovernusantara.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.dicoding.discovernusantara.R
+import com.dicoding.discovernusantara.adapter.SectionPagerAdapter
 import com.dicoding.discovernusantara.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
