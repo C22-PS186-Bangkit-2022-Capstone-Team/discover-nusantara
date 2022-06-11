@@ -42,7 +42,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         val location = LatLng(lat, long)
         mMap.addMarker(MarkerOptions().position(location).title(title))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 
     companion object {
