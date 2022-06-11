@@ -1,7 +1,10 @@
 package com.dicoding.discovernusantara.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
+import com.dicoding.discovernusantara.data.Sites
 import com.dicoding.discovernusantara.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
@@ -12,8 +15,24 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnShowMap.setOnClickListener {
+        val site = intent.getParcelableExtra<Sites>(EXTRA_SITES) as Sites
+        binding.txtNameDetail.text = site.name
+        binding.txtLocationDetail.text = "${site.city}, ${site.province}"
+        binding.textDescription.text = site.description
+        Glide.with(this)
+            .load(site.imageUrl)
+            .into(binding.imgDetail)
 
+        binding.btnShowMap.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            intent.putExtra(MapsActivity.EXTRA_TITLE, site.name)
+            intent.putExtra(MapsActivity.EXTRA_LAT, site.lat)
+            intent.putExtra(MapsActivity.EXTRA_LONG, site.long)
+            startActivity(intent)
+        }
+
+        binding.imgBack.setOnClickListener {
+            onBackPressed()
         }
     }
 

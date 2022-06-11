@@ -31,15 +31,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.uiSettings.isIndoorLevelPickerEnabled = true
+        mMap.uiSettings.isCompassEnabled = true
+        mMap.uiSettings.isMapToolbarEnabled = true
 
+        val lat = intent.getDoubleExtra(EXTRA_LAT, 0.0)
+        val long = intent.getDoubleExtra(EXTRA_LONG, 0.0)
+        val title = intent.getStringExtra(EXTRA_TITLE)
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val location = LatLng(lat, long)
+        mMap.addMarker(MarkerOptions().position(location).title(title))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
     }
 
     companion object {
         const val EXTRA_LAT = "extra_lat"
         const val EXTRA_LONG = "extra_long"
+        const val EXTRA_TITLE = "extra_title"
     }
 }

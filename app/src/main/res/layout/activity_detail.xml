@@ -28,7 +28,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_description" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgDetail"
             android:layout_width="0dp"
             android:layout_height="275dp"
             android:scaleType="centerCrop"
@@ -48,7 +48,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imgDetail"
             tools:text="Name" />
 
         <TextView
