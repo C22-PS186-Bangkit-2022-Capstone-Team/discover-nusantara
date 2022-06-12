@@ -6,31 +6,31 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "newsentity")
+@Entity(tableName = "sitesentity")
 @Parcelize
 data class SitesEntity (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Int = 0,
+    var id: Int = 0,
 
     @ColumnInfo(name = "name")
-    val name: String? = null,
+    var name: String? = null,
 
     @ColumnInfo(name = "city")
-    val city: String? = null,
+    var city: String? = null,
 
     @ColumnInfo(name = "province")
-    val province: String? = null,
+    var province: String? = null,
 
     @ColumnInfo(name = "description")
-    val description: String? = null,
+    var description: String? = null,
 
     @ColumnInfo(name = "imgUrl")
-    val imageUrl: String? = null,
+    var imageUrl: String? = null,
 
     @ColumnInfo(name ="lat")
-    val lat: Double = 0.0,
+    var lat: Double = 0.0,
 
     @ColumnInfo(name = "long")
-    val long: Double = 0.0
+    var long: Double = 0.0
 ): Parcelable

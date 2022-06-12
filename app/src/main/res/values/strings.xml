@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Discover Nusantara</string>
+    <string name="app_name">Dinara</string>
     <string name="history_site">Historical Sites</string>
     <string name="scan">Scan</string>
     <string name="search">Search</string>
@@ -8,4 +8,9 @@
     <string name="back">Back</string>
     <string name="show_in_map">Show in Map</string>
     <string name="title_activity_maps">Maps Activity</string>
+    <string name="onboarding_title_1">Discover</string>
+    <string name="onboarding_desc_1">Temukan sejarah dari sebuah monumen</string>
+    <string name="onboarding_title_2">Scan</string>
+    <string name="onboarding_desc_2">Ambil gambar dan mulai petualangan mu</string>
+    <string name="start">Mulai</string>
 </resources>

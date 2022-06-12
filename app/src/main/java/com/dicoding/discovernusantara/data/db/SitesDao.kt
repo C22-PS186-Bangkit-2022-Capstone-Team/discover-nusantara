@@ -18,6 +18,6 @@ interface SitesDao {
     @Query("SELECT * FROM sitesentity ORDER BY name ASC")
     fun getAllSites(): LiveData<List<SitesEntity>>
 
-    @RawQuery
-    fun getSitesByName(query: SupportSQLiteQuery): LiveData<List<SitesEntity>>
+    @Query("SELECT * FROM sitesentity WHERE name LIKE '%' || :name || '%'")
+    fun getSitesByName(name: String): LiveData<List<SitesEntity>>
 }

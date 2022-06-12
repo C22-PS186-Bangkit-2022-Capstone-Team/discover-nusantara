@@ -10,9 +10,5 @@ class SitesRepository private constructor(
 ){
     fun getAllSites(): LiveData<List<SitesEntity>> = sitesDao.getAllSites()
 
-    fun getSitesByName(name: String): LiveData<List<SitesEntity>> {
-        val query = "SELECT * FROM sitesentity WHERE name LIKE '%$name%'"
-        val simpleQuery = SimpleSQLiteQuery(query)
-        return sitesDao.getSitesByName(simpleQuery)
-    }
+    fun getSitesByName(name: String): LiveData<List<SitesEntity>> = sitesDao.getSitesByName(name)
 }

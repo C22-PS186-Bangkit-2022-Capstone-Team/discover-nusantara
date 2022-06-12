@@ -19,8 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
         <activity
-            android:name=".OnboardingActivity"
-            android:exported="false" />
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.DiscoverNusantara"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -29,13 +30,16 @@
         <activity
             android:name=".ui.MapsActivity"
             android:exported="false"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:theme="@style/Theme.DiscoverNusantara" />
         <activity
             android:name=".ui.CameraActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.DiscoverNusantara"/>
         <activity
             android:name=".ui.DetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.DiscoverNusantara"/>
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

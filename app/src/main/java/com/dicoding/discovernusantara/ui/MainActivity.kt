@@ -1,6 +1,9 @@
 package com.dicoding.discovernusantara.ui
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +15,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.dicoding.discovernusantara.R
 import com.dicoding.discovernusantara.adapter.SectionPagerAdapter
 import com.dicoding.discovernusantara.databinding.ActivityMainBinding
+import com.dicoding.discovernusantara.ui.onboarding.OnboardingActivity
 import com.dicoding.discovernusantara.ui.viewmodels.MainViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -38,11 +42,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (!checkOnboarding()) startActivity(Intent(this, OnboardingActivity::class.java))
+
         setUpSectionPager()
 
         if (!allPermissionGranted()) {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
+    }
+
+    private fun checkOnboarding(): Boolean {
+        val sharedFile = packageName
+        val shared: SharedPreferences = getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        return shared.getBoolean("shared_onboarding", false)
     }
 
     private fun setUpSectionPager() {
