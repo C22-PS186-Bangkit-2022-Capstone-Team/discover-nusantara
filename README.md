@@ -19,4 +19,5 @@ Dinara (Discover Nusantara) is a mobile application that allow user to discover 
 ## How to Install
 ---
 You can download this application by accessing the link below. After it successfully downloaded, you can install it on you Android phone and use the application.
+
 https://bit.ly/DiscoverNusantara
