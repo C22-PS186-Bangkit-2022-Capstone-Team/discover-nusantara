@@ -4,22 +4,20 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import androidx.sqlite.db.SimpleSQLiteQuery
 import com.dicoding.discovernusantara.data.db.SitesDao
 import com.dicoding.discovernusantara.data.db.SitesEntity
 import com.dicoding.discovernusantara.data.remote.ApiConfig
-import com.dicoding.discovernusantara.data.remote.ApiService
 import java.lang.Exception
 
 class SitesRepository private constructor(
-    private val apiService: ApiService,
+    private val apiConfig: ApiConfig,
     private val sitesDao: SitesDao
 ){
     fun getAllSites(): LiveData<Result<List<SitesEntity>>> = liveData {
         emit(Result.Loading)
         try {
-            ApiConfig.changeBaseUrl("https://pro-gecko-349214-ki3uf5q62a-as.a.run.app/")
-            val response = apiService.getMonuments()
+            apiConfig.changeBaseUrl("https://pro-gecko-349214-ki3uf5q62a-as.a.run.app/")
+            val response = apiConfig.getApiService().getMonuments()
             val sitesList = response.map { sites ->
                 SitesEntity(sites.id, sites.nama, sites.kota, sites.provinsi, sites.deskripsi, sites.imgURL, sites.latitude, sites.longitude)
             }
@@ -38,9 +36,9 @@ class SitesRepository private constructor(
 
     companion object {
         private var INSTANCE: SitesRepository? = null
-        fun getInstance(apiService: ApiService, sitesDao: SitesDao): SitesRepository =
+        fun getInstance(apiConfig: ApiConfig, sitesDao: SitesDao): SitesRepository =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: SitesRepository(apiService, sitesDao)
+                INSTANCE ?: SitesRepository(apiConfig, sitesDao)
             }.also { INSTANCE = it }
     }
 }

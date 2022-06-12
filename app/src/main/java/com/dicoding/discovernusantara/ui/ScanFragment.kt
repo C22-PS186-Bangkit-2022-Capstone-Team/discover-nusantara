@@ -11,14 +11,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
 import com.dicoding.discovernusantara.databinding.FragmentScanBinding
+import com.dicoding.discovernusantara.helper.reduceFileImage
 import com.dicoding.discovernusantara.helper.rotateBitmap
 import com.dicoding.discovernusantara.helper.uriToFile
+import com.dicoding.discovernusantara.ui.viewmodels.SitesViewModel
+import com.dicoding.discovernusantara.ui.viewmodels.ViewModelFactory
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 class ScanFragment : Fragment() {
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var factory: ViewModelFactory
+    private val viewModel: SitesViewModel by viewModels { factory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +40,8 @@ class ScanFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        factory = ViewModelFactory.getInstance(requireActivity())
+
         binding.btnTakePhoto.setOnClickListener { startCameraX() }
         binding.btnGallery.setOnClickListener { openGallery() }
         binding.btnSearch.setOnClickListener { uploadPhoto() }
@@ -52,7 +64,28 @@ class ScanFragment : Fragment() {
         when (getFile) {
             null -> Toast.makeText(context, "Please input the picture", Toast.LENGTH_SHORT).show()
             else -> {
-                Toast.makeText(context, "uploading photo", Toast.LENGTH_SHORT).show()
+                val file = reduceFileImage(getFile as File)
+                val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+                val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData("photo", file.name, requestImageFile)
+                viewModel.getPrediction(imageMultipart)
+                viewModel.isLoading.observe(viewLifecycleOwner) {
+                    if (it) binding.progressBarScan.visibility = View.VISIBLE
+                    else binding.progressBarScan.visibility = View.GONE
+                }
+                viewModel.prediction.observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        if (it.prediction != "") {
+                            val site = viewModel.getSiteByName(it.prediction).value
+                            val intent = Intent(activity, ResultActivity::class.java)
+                            intent.putExtra(ResultActivity.EXTRA_SITES, site?.get(0))
+                            activity?.startActivity(intent)
+                        } else {
+                            Toast.makeText(context, "Ada yang salah, silahkan kirim ulang", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(context, "Ada yang salah, silahkan kirim ulang", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }

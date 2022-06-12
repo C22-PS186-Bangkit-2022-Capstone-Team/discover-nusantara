@@ -7,9 +7,9 @@ import com.dicoding.discovernusantara.data.remote.ApiConfig
 
 object Injection {
     fun provideRepository(context: Context): SitesRepository {
-        val apiService = ApiConfig.getApiService()
+        val apiConfig = ApiConfig
         val database = SitesRoomDatabase.getDatabase(context)
         val dao = database.sitesDao()
-        return SitesRepository.getInstance(apiService, dao)
+        return SitesRepository.getInstance(apiConfig, dao)
     }
 }

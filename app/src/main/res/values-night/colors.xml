@@ -2,4 +2,5 @@
 <resources>
     <color name="tab_background">#ab8e7a</color>
     <color name="tab_indicator">#fff1db</color>
+    <color name="back_arrow">#ffffff</color>
 </resources>

@@ -28,3 +28,8 @@ data class SitesResponse(
 	@field:SerializedName("ImgURL")
 	val imgURL: String? = null
 )
+
+data class Prediction(
+	@field:SerializedName("prediction")
+	val prediction: String
+)

@@ -2,6 +2,7 @@ package com.dicoding.discovernusantara.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.dicoding.discovernusantara.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -38,6 +39,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val lat = intent.getDoubleExtra(EXTRA_LAT, 0.0)
         val long = intent.getDoubleExtra(EXTRA_LONG, 0.0)
+        Log.d("MapsActivity", "$lat, $long")
         val title = intent.getStringExtra(EXTRA_TITLE)
         // Add a marker in Sydney and move the camera
         val location = LatLng(lat, long)

@@ -27,8 +27,8 @@ class DetailActivity : AppCompatActivity() {
         binding.btnShowMap.setOnClickListener {
             val intent = Intent(this, MapsActivity::class.java)
             intent.putExtra(MapsActivity.EXTRA_TITLE, site.name)
-            intent.putExtra(MapsActivity.EXTRA_LAT, site.lat)
-            intent.putExtra(MapsActivity.EXTRA_LONG, site.long)
+            intent.putExtra(MapsActivity.EXTRA_LAT, site.long)
+            intent.putExtra(MapsActivity.EXTRA_LONG, site.lat)
             startActivity(intent)
         }
 

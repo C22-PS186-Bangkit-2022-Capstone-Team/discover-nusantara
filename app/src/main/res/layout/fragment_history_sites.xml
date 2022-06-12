@@ -7,7 +7,7 @@
     tools:context=".ui.HistorySitesFragment">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txt_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/txt_search"
         tools:listitem="@layout/sites_item" />
 
     <ProgressBar

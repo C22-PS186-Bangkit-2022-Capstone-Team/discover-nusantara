@@ -18,4 +18,6 @@
 
     <color name="tab_background">#ddbea9</color>
     <color name="tab_indicator">#ab8e7a</color>
+
+    <color name="back_arrow">#000000</color>
 </resources>
