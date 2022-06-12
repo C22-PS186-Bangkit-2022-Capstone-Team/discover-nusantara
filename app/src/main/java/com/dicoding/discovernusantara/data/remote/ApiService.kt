@@ -4,5 +4,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("monument")
-    fun getMonuments()
+    suspend fun getMonuments(): List<SitesResponse>
 }

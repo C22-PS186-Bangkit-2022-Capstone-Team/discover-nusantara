@@ -7,15 +7,18 @@ import androidx.sqlite.db.SupportSQLiteQuery
 @Dao
 interface SitesDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(sites: SitesEntity)
+    suspend fun insert(sites: List<SitesEntity>)
 
     @Update
-    fun update(sites: SitesEntity)
+    suspend fun update(sites: SitesEntity)
 
     @Delete
-    fun delete(sites: SitesEntity)
+    suspend fun delete(sites: SitesEntity)
 
-    @Query("SELECT * FROM sitesentity ORDER BY name ASC")
+    @Query("DELETE FROM sitesentity")
+    suspend fun deleteAll()
+
+    @Query("SELECT * FROM sitesentity ORDER BY city ASC")
     fun getAllSites(): LiveData<List<SitesEntity>>
 
     @Query("SELECT * FROM sitesentity WHERE name LIKE '%' || :name || '%'")

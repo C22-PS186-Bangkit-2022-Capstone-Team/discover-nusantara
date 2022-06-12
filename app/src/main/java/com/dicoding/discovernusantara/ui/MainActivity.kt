@@ -13,7 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.dicoding.discovernusantara.R
-import com.dicoding.discovernusantara.adapter.SectionPagerAdapter
+import com.dicoding.discovernusantara.ui.adapter.SectionPagerAdapter
 import com.dicoding.discovernusantara.databinding.ActivityMainBinding
 import com.dicoding.discovernusantara.ui.onboarding.OnboardingActivity
 import com.dicoding.discovernusantara.ui.viewmodels.MainViewModel

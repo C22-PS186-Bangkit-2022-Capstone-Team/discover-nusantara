@@ -1,4 +1,4 @@
-package com.dicoding.discovernusantara.adapter
+package com.dicoding.discovernusantara.ui.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

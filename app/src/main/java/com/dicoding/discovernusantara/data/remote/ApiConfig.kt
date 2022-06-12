@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
     lateinit var retrofit: Retrofit
-    var baseUrl = "https://pro-gecko-349214-ki3uf5q62a-as.a.run.app/"
+    private var baseUrl = "https://pro-gecko-349214-ki3uf5q62a-as.a.run.app/"
     fun getApiService(): ApiService {
         val loggingInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

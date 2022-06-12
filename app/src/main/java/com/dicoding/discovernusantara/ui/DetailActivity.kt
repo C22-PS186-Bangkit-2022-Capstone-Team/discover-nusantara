@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.dicoding.discovernusantara.data.Sites
+import com.dicoding.discovernusantara.data.db.SitesEntity
 import com.dicoding.discovernusantara.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val site = intent.getParcelableExtra<Sites>(EXTRA_SITES) as Sites
+        val site = intent.getParcelableExtra<Sites>(EXTRA_SITES) as SitesEntity
         binding.txtNameDetail.text = site.name
         binding.txtLocationDetail.text = "${site.city}, ${site.province}"
         binding.textDescription.text = site.description

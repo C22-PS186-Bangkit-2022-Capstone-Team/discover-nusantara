@@ -1,4 +1,4 @@
-package com.dicoding.discovernusantara.adapter
+package com.dicoding.discovernusantara.ui.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
