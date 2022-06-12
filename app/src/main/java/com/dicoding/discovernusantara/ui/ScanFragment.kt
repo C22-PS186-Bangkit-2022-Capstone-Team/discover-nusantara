@@ -75,15 +75,12 @@ class ScanFragment : Fragment() {
                 viewModel.prediction.observe(viewLifecycleOwner) {
                     if (it != null) {
                         if (it.prediction != "") {
-                            val site = viewModel.getSiteByName(it.prediction).value
                             val intent = Intent(activity, ResultActivity::class.java)
-                            intent.putExtra(ResultActivity.EXTRA_SITES, site?.get(0))
+                            intent.putExtra(ResultActivity.EXTRA_SITES, it.prediction)
                             activity?.startActivity(intent)
                         } else {
                             Toast.makeText(context, "Ada yang salah, silahkan kirim ulang", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        Toast.makeText(context, "Ada yang salah, silahkan kirim ulang", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

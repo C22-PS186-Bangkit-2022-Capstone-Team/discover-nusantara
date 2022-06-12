@@ -19,8 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
         <activity
-            android:name=".ResultActivity"
-            android:exported="false" />
+            android:name=".ui.ResultActivity"
+            android:exported="false"
+            android:theme="@style/Theme.DiscoverNusantara"/>
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:exported="false"
