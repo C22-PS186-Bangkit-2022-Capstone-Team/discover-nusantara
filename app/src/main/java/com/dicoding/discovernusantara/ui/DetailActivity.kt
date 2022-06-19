@@ -16,7 +16,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val site = intent.getParcelableExtra<Sites>(EXTRA_SITES) as SitesEntity
+        val site = intent.getParcelableExtra<SitesEntity>(EXTRA_SITES) as SitesEntity
         binding.txtNameDetail.text = site.name
         binding.txtLocationDetail.text = "${site.city}, ${site.province}"
         binding.textDescription.text = site.description
